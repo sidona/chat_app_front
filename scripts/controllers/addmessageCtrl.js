@@ -10,7 +10,7 @@ angular.module('frontendApp')
     var urlParts = $window.location.pathname.split("/");
     var nameRoom = urlParts[urlParts.length - 1];
 
-    var chatUrl = ENDPOINT_URI+"/api/chat/:" + nameRoom;
+    var chatUrl = ENDPOINT_URI+"/api/chat/:nameRoom";
 
     var socket=io.connect('http://localhost:3000');
 
