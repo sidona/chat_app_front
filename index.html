@@ -22,49 +22,22 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+    <div class="container" ng-cloak>
+      <div ng-include="'views/header.html'"></div>
 
-            <a class="navbar-brand" href="#/">frontend</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home">Home</a></li>
-              <li><a ng-href="#/">About</a></li>
-              <li><a ui-sref="contact">Contact</a></li>
-              <li ng-hide="isAuthenticated()" ui-sref-active="active">
-                <a ui-sref="login">Login</a>
-              </li>
-              <li ng-show="isAuthenticated()" ui-sref-active="active">
-                <a ui-sref="logout">Logout</a>
-              </li>
-            </ul>
-            </ul>
-          </div>
+      <div class="row">
+        <div class="ui-view-container">
+          <div ui-view></div>
         </div>
       </div>
-    </div>
+      <div ng-include="'views/alert.html'"></div>
 
 
-
-    <div class="footer">
-      <div class="container">
+      <div class="footer">
 
       </div>
     </div>
-
-    <div ui-view></div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -84,8 +57,10 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -96,6 +71,15 @@
         <script src="scripts/controllers/chatdetailCtrl.js"></script>
         <script src="scripts/controllers/addmessageCtrl.js"></script>
         <script src="scripts/controllers/addroom.js"></script>
+        <script src="scripts/services/authtoken.js"></script>
+        <script src="scripts/services/authinterceptor.js"></script>
+        <script src="scripts/services/alert.js"></script>
+        <script src="scripts/directives/validateequals.js"></script>
         <!-- endbuild -->
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/logout.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="scripts/controllers/header.js"></script>
+
 </body>
 </html>
