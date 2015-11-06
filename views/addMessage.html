@@ -1,6 +1,7 @@
 <div ng-controller="AddmessageCtrl">
+  <div ng-include="'views/author.html'"></div>
   <div ng-repeat="c in chat">
-    <p>{{c.author}}</p>
+
     <p  style="margin-left: 15px"> {{c.msg}}</p>
 </div>
     <form role="form" name="newMsgForm" ng-submit="save(newMsg)" class="form-horizontal">

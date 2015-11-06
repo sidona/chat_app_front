@@ -2,8 +2,8 @@
 
 
 angular.module('frontendApp')
-  .controller('AddmessageCtrl', ['$scope', '$window', '$http', 'ENDPOINT_URI','chatDetail',
-    function ($scope, $window, $http, ENDPOINT_URI,chatDetail) {
+  .controller('AddmessageCtrl', ['$scope', '$window', '$http', 'ENDPOINT_URI','chatDetail','auth',
+    function ($scope, $window, $http, ENDPOINT_URI,chatDetail,auth) {
 
       chatDetail.query(function (data){
       $scope.chatV(data);

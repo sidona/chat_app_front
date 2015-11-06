@@ -2,23 +2,17 @@
 
 
 angular.module('frontendApp')
-  .controller('RegisterCtrl', function ($scope,$http,$rootScope,alert,authToken,ENDPOINT_URI) {
-    $scope.submit=function(){
-      var url=ENDPOINT_URI+'/register';
-      //autenticarea cu api/api
-      var user={
-        email:$scope.email,
-        password:$scope.password
-      }
-
-      $http.post(url,user).success(function(res){
-        //console.log("good")
-        alert('success', ' ','welcome, '+res.user.email)
-        authToken.setToken(res.token);
+  .controller('RegisterCtrl', function ($scope, alert, $auth) {
+    $scope.submit = function () {
+      $auth.signup({
+        email: $scope.email,
+        password: $scope.password
       })
-        .error(function(err){
-          //console.log("bad");
-          alert('warning','oops','could not register')
-      })
-    }
+        .then(function (res) {
+          alert('success', 'Account Created!', 'Welcome, ' + res.data.user.email);
+        })
+        .catch(function (err) {
+          alert('warning', 'Unable to create account :(', err.message);
+        });
+    };
   });

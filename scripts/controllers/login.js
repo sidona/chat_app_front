@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('frontendApp')
-  .controller('LoginCtrl', function ($scope,$http,ENDPOINT_URI,authToken,alert) {
-    $scope.submit=function(){
-      var url=ENDPOINT_URI+'/login';
-      var user={
-        email:$scope.email,
-        password:$scope.password
-      }
+  .controller('LoginCtrl', function ($scope, alert, auth, $auth) {
+    $scope.submit = function () {
+      $auth.login({
+        email: $scope.email,
+        password: $scope.password
+      }).then(function (res) {
+          $scope.author=res.data.user.email;
+        var message = 'Thanks for coming back ' + res.data.user.email + '!';
 
-      $http.post(url,user).success(function(res){
-        //console.log("good")
-        alert('success', ' ','welcome, '+res.user.email)
-        authToken.setToken(res.token);
-      })
-        .error(function(err){
-          //console.log("bad");
-          alert('warning','oops','wrong')
-        })
+
+        alert('success', 'Welcome', message);
+      }).catch(handleError);
+    };
+
+
+    function handleError(err) {
+      alert('warning', 'Something went wrong :(', err.message);
     }
   });
