@@ -25,7 +25,12 @@ angular.module('frontendApp')
         $scope.$apply();
       });
 
-
+      //$scope.newMsg=new chatDetail();
+      //
+      //$scope.save=function(){
+      //  $scope.chat.push(this.newMsg);
+      //  $scope.newMsg = '';
+      //}
       $scope.save = function (newMsg) {
 
         $http.post(chatUrl,newMsg)

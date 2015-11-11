@@ -41,6 +41,112 @@ body {
   margin: 30px 0;
 }
 
+/*slider*/
+
+
+.slider {
+  width: 800px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background: #e6e6e6;
+  border: 20px solid #FFF;
+  margin-top: 20px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 1002;
+  display: block;
+  top: 50%;
+  margin-top: -35px;
+  width: 36px;
+  height: 71px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.arrow.prev {
+  opacity: 0.9;
+  left: 20px;
+  background-image: url(../images/left-arrow.png);
+  transition: 0.2s linear all;
+  color: black;
+}
+
+.arrow.next {
+  opacity: 0.9;
+  right: 20px;
+  background-image: url('../images/right-arrow.png');
+  transition: 0.2s linear all;
+  color: black;
+}
+
+
+.nonDraggableImage{
+  -webkit-user-drag: none;
+}
+
+ .wrapper {
+  margin: 0 auto;
+  width: 100%;
+  padding: 1em 0 .8em;
+}
+
+. ul {
+  margin: 0;
+  width: 100%;
+}
+
+.dot, .nav .dot a {
+  display: inline-block;
+  zoom: 1;
+}
+
+.dots .dot {
+  position: relative;
+  margin: 0 8px;
+  width: 12px;
+  height: 12px;
+}
+
+.dots .dot a {
+  position: absolute;
+  margin-left: 280px;
+  margin-top: 200px;
+  top: 2px;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #FFF;
+  border: 1px solid transparent;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.25s, border-color 0.25s;
+  -moz-transition: background-color 0.25s, border-color 0.25s;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+
+.dots .dot a.active {
+  border-color: #FFF;
+  background-color: transparent;
+}
+
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
@@ -81,6 +187,18 @@ body {
     border-bottom: 0;
   }
 }
+
+
+/*post*/
+
+.post .panel-primary{
+  width: 768px;
+  border-color: #dd4814;
+
+}
+
+
+
 .form-signin {
   max-width: 280px;
   padding: 15px;

@@ -2,15 +2,10 @@
 
 
 angular.module('frontendApp')
-  .controller('RegisterCtrl', function ($scope, alert, $auth) {
+  .controller('RegisterCtrl', function ($scope, alert,auth) {
     $scope.submit = function () {
-      $auth.signup({
-        email: $scope.email,
-        password: $scope.password
-      })
-        .then(function (res) {
-          alert('success', 'Account Created!', 'Welcome, ' + res.data.user.email);
-        })
+      auth.register($scope.email, $scope.password)
+
         .catch(function (err) {
           alert('warning', 'Unable to create account :(', err.message);
         });

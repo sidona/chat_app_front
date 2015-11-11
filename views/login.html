@@ -1,5 +1,4 @@
 
-<div>
 <form ng-submit="submit()" name="register" class="form-signin" novalidate>
   <h1 class="form-signin-heading text-muted">Login</h1>
   <input name="email" type="email" ng-model="email" class="form-control" placeholder="Email address" required>
@@ -10,5 +9,4 @@
   </button><br/>
   <a class="text-muted pull-right" ui-sref="register">Create account</a>
 </form>
-
-</div>
+<div ng-include="'views/partial/author.html'"></div>

@@ -1,0 +1,34 @@
+<div ng-controller="AddmessageCtrl">
+
+  <!--<div ng-repeat="c in chat">-->
+  <!--<div ng-include src="views/author.html"></div>-->
+  <!--<p  style="margin-left: 15px"> {{c.msg}}</p>-->
+  <!--</div>-->
+
+  <div ng-repeat="c in chat">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>{{c.author}} sidona</strong>: {{c.msg}}</li>
+    </ul>
+  </div>
+
+  <form role="form" name="newMsgForm" ng-submit="save(newMsg)" class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-lg-1">Content</label>
+
+      <div class="col-lg-5">
+          <textarea cols="30" rows="2" name="msg" ng-model="newMsg.msg" placeholder="Your Msg" required=""
+                    maxlength="120" class="form-control"></textarea>
+        <span ng-show="newMsgForm.msg.$error.required">Required</span>
+
+        <p>{{ 120 - newMsg.msg.length }}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-1 col-lg-5">
+        <input type="submit" value="Send" ng-disabled="newMsgForm.$invalid" class="btn btn-primary"/>
+      </div>
+    </div>
+  </form>
+
+</div>
+
