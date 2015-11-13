@@ -1,19 +1,20 @@
 <div ng-controller="PostCtrl">
-  <div ng-repeat="p in posts">
     <div class="col-md-8">
       <div class="post">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <strong>{{p.title}} {{p.created_at}}</strong>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            {{p.content}}
+        <div ng-repeat="p in posts">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <strong>{{p.title}} {{p.created_at}}</strong>
           </div>
-          <button type="button" class="btn btn-sm btn-primary" ng-click="deletePost(p)">Delete</button>
+          <div class="panel-body">
+            <div class="row">
+              {{p.content}}
+            </div>
+            <a ui-sref="postDetail({id:p._id})">more...</a>
+          </div>
+          <button type="button" class="btn btn-sm btn-danger" ng-click="deletePost(p)">Delete</button>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

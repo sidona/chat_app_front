@@ -12,4 +12,5 @@ angular.module('frontendApp')
     chat.query(function(data){
       $scope.chatRoom=data;
     })
+
   });

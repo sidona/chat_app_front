@@ -1,26 +1,35 @@
-<div class="header" ng-controller="HeaderCtrl">
+
+<head><link rel="stylesheet" ng-href="styles/bootstrap-{{css}}.css"></head>
+<div class="header" >
   <div class="navbar navbar-default" role="navigation">
 
-      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+    <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-        <ul class="nav navbar-nav pull-right">
+      <ul class="nav navbar-nav pull-right">
+        <li class="active"><a ui-sref="home">Home</a></li>
+        <li class="active"><a ui-sref="chat">Chat</a></li>
+        <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
 
-          <li class="active"><a ui-sref="home">Home</a></li>
-          <li class="active"><a ui-sref="chat">Chat</a></li>
-          <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
+        <li ng-hide="isAuthenticated()" ui-sref-active="active">
+          <a ui-sref="login">Login</a>
+        </li>
 
-          <li ng-hide="isAuthenticated()" ui-sref-active="active">
-            <a ui-sref="login">Login</a>
-          </li>
+        <li ng-show="isAuthenticated()" ui-sref-active="active">
+          <a ui-sref="logout">Logout
+          </a>
+        </li>
+        <li>
+        <div class="theme">
+          <form>
+            <div class="form-group" placeholder="Email">
+              <select class="form-control" ng-model="css" ng-options="bootstrap.url  as bootstrap.name for bootstrap in bootstraps"></select>
+            </div>
+          </form>
+        </div>
+        </li>
+      </ul>
 
-          <li ng-show="isAuthenticated()" ui-sref-active="active">
-            <a ui-sref="logout">Logout
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
     </div>
+  </div>
 
 </div>

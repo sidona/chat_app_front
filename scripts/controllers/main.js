@@ -2,10 +2,16 @@
 
 
 angular.module('frontendApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+  .controller('mainController', function ($scope) {
+    $scope.css = 'cyborg';
+
+
+    $scope.bootstraps = [
+      {  name: 'simplex',url: 'simplex' },
+      {  name: 'hero',url: 'hero' },
+      {  name: 'slate',url: 'slate' },
+      {  name: 'united',url: 'united' },
+
     ];
+
   });

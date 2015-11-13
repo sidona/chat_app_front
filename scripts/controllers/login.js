@@ -17,7 +17,9 @@ angular.module('frontendApp')
 
     $scope.submit = function () {
       auth.login($scope.email, $scope.password);
+
     };
+
 
     function handleError(err) {
       alert('warning', 'Something went wrong :(', err.message);

@@ -36,8 +36,13 @@ angular.module('frontendApp').config(function ($stateProvider, $urlRouterProvide
     }),
     $stateProvider
       .state('chat', {
-        url: "/chat",
+        url: "/home/chat",
         templateUrl: "views/chats.html"
+      }),
+    $stateProvider
+      .state('postDetail', {
+        url: "/home/:id",
+        templateUrl: "views/postDetail.html"
       }),
     $stateProvider
       .state('register', {
@@ -58,7 +63,7 @@ angular.module('frontendApp').config(function ($stateProvider, $urlRouterProvide
       })
   $stateProvider
     .state('chatDetail', {
-      url: '/home/:nameRoom',
+      url: '/home/chat/:nameRoom',
       templateUrl: 'views/chat.html',
       controller: 'ChatdetailctrlCtrl'
     })

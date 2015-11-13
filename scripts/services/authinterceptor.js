@@ -15,7 +15,7 @@ angular.module('frontendApp')
         var token=authToken.getToken();
 
         if(token)
-          config.headers.Authorization='Bearer'+token;
+          config.headers.Authorization='Bearer '+token;
         return config;
       },
       response:function(response){
@@ -24,4 +24,19 @@ angular.module('frontendApp')
 
       }
     };
+
+    //return{
+    //  request:addToken
+    //}
+    //function addToken(config){
+    //  var token=authToken.getToken();
+    //  if(token){
+    //    config.headers=config.headers||{};
+    //    //authorization header
+    //    config.headers.Authorization='Bearer '+token
+    //  }
+    //  return config;
+    //}
+
+
   });
