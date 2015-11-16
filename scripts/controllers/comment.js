@@ -13,11 +13,12 @@ angular.module('frontendApp')
 
   });
 angular.module('frontendApp')
-  .controller('AddCommentCtrl',function($scope,postDetail,$state,$stateParams){
-    $scope.comment=new postDetail({id: $stateParams.id});
+  .controller('AddCommentCtrl',function($scope,postDetail,$state,$stateParams,auth){
+    $scope.comments = postDetail.get({id: $stateParams.id});
 
     $scope.addComment=function(){
-      $scope.comment.$save(function(){
+      $scope.comments.author = auth.authenticatedUser;
+      $scope.comments.$save(function(){
         $state.go('home')
       })
     }

@@ -8,19 +8,20 @@
  * Service in the frontendApp.
  */
 angular.module('frontendApp')
-  .service('post', function (ENDPOINT_URI,$resource) {
-    return $resource(ENDPOINT_URI +"/post/:id",{id:'@_id'},
+  .service('post',
+  function (ENDPOINT_URI, $resource) {
+    return $resource(ENDPOINT_URI + "/post/:id", {id: '@_id'},
       {
-        delete : {method:'DELETE'},
-        post :{method:'POST'}
+        delete: {method: 'DELETE'},
+        post: {method: 'POST'}
       })
-  })
+  });
 
 angular.module('frontendApp')
-.service('postDetail',function(ENDPOINT_URI,$resource){
-    return $resource(ENDPOINT_URI+'/post/:id/comments',{id:'@_id'},
+  .service('postDetail', function (ENDPOINT_URI, $resource) {
+    return $resource(ENDPOINT_URI + '/post/:id', {id: '@_id'},
       {
-        post:{method:'POST'}
+        post: {method: 'POST'}
       }
     )
-  })
+  });

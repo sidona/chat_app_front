@@ -3,7 +3,7 @@
   <div class="row" style="padding: 16px; margin-left: 20px">
     chat Room: {{chatDetail.nameRoom}}
     <ul class="list-group" ng-repeat="chat in chatDetail.chat">
-      <li class="list-group-item"> <strong>{{chat.author}} sidona</strong>: {{chat.msg}}</li>
+      <li class="list-group-item"> <strong>{{chat.author}}</strong>: {{chat.msg}}</li>
     </ul>
   </div>
   <div ng-include="'views/partial/addMessage.html'"></div>

@@ -8,9 +8,9 @@
    * Service in the frontendApp.
    */
   angular.module('frontendApp')
-    .service('auth', function auth($http, ENDPOINT_URI, authToken, $state, alert) {
+    .service('auth', function auth($http, ENDPOINT_URI, authToken, $state, alert, $window) {
 
-      this.authenticatedUser;
+      this.authenticatedUser = '';
       var self = this;
 
       function authSuccessful(res) {
@@ -19,15 +19,11 @@
         self.authenticatedUser = res.user.email;
         console.log('res', self.authenticatedUser);
 
-        var message =  res.user.email + '!';
+        var message = res.user.email + '!';
         alert('success', 'Welcome ', message);
 
         $state.go('home');
       }
-
-
-
-
 
 
       this.login = function (email, password) {

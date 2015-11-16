@@ -1,8 +1,9 @@
 <div ng-controller="ChatviewCtrl">
 
   <div class="row">
+    <p>Chat Room</p>
     <ul class="list-group" ng-repeat="chat in chatRoom">
-      <li class="list-group-item"><a ui-sref="chatDetail({nameRoom:chat.nameRoom})"> {{chat.nameRoom}}</a></li>
+      <li class="list-group-item"><a ui-sref="chatDetail({nameRoom:chat.nameRoom})"> {{chat.nameRoom}}</a> created by: {{chat.author}}</li>
     </ul>
   </div>
   <div ng-include="'views/partial/addRoom.html'"></div>

@@ -20,7 +20,8 @@ angular.module('frontendApp')
       var socket = io.connect('http://localhost:3000');
       socket.emit("join");
 
-      socket.on("broadcast", function (msg) {
+      socket.on("broadcast", function (msg,author) {
+        $scope.chat.author = auth.authenticatedUser;
         $scope.chat.push(msg);
         $scope.$apply();
       });
@@ -35,9 +36,10 @@ angular.module('frontendApp')
 
         $http.post(chatUrl,newMsg)
           .then(function (result) {
+
             $scope.chat.push(result.data);
             $scope.newMsg = createBlank();
-            socket.emit("newMsg", { msg: result.data});
+            socket.emit("newMsg", { msg: result.data,author:result.data});
             console.log(newMsg)
           }, function (err) {
 
@@ -59,7 +61,7 @@ angular.module('frontendApp')
 
       function createBlank() {
         return {
-          msg: ""
+          msg: "",author:''
         };
       }
 

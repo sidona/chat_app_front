@@ -4,14 +4,9 @@
 angular.module('frontendApp')
   .controller('HeaderCtrl', function ($scope, authToken,auth,$rootScope) {
     $scope.isAuthenticated = authToken.isAuthenticated;
+    $scope.author=auth.authenticatedUser;
 
-
-
-     $scope.author=auth.authenticatedUser;
-
-
-
-      console.log($scope.author)
+      console.log('autor',$scope.author)
     $scope.css = 'cyborg';
 
 

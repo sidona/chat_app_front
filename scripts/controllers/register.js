@@ -2,7 +2,7 @@
 
 
 angular.module('frontendApp')
-  .controller('RegisterCtrl', function ($scope, alert,auth) {
+  .controller('RegisterCtrl', function ($scope, alert,$state,auth) {
     $scope.submit = function () {
       auth.register($scope.email, $scope.password)
 
@@ -11,3 +11,4 @@ angular.module('frontendApp')
         });
     };
   });
+
