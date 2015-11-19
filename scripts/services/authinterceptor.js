@@ -8,22 +8,37 @@
  * Service in the frontendApp.
  */
 angular.module('frontendApp')
-  .factory('authInterceptor', function (authToken) {
+  .factory('authInterceptor', function authInterceptor(authToken) {
 
+    //  return{
+    //    request:addToken
+    //  }
+    //  function addToken(config){
+    //    var token=authToken.getToken();
+    //    if(token){
+    //      config.headers=config.headers||{};
+    //      //authorization header
+    //      config.headers.Authorization='Bearer '+token
+    //    }
+    //    return config;
+    //  }
+    //
+    //})
     return {
-      request:function(config){
-        var token=authToken.getToken();
+      request: function (config) {
+        var token = authToken.getToken();
 
-        if(token)
-          config.headers.Authorization='Bearer '+token;
+        if (token)
+          config.headers.Authorization = 'Bearer ' + token;
         return config;
       },
-      response:function(response){
+      response: function (response) {
 
         return response;
 
       }
     };
+  });
 
     //return{
     //  request:addToken
@@ -39,4 +54,4 @@ angular.module('frontendApp')
     //}
 
 
-  });
+

@@ -6,16 +6,11 @@
     <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
       <ul class="nav navbar-nav pull-right">
-        <li class="active"><a ui-sref="home">Home</a></li>
-        <li class="active"><a ui-sref="chat">Chat</a></li>
+        <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+        <li ui-sref-active="active"><a ui-sref="chat">Chat</a></li>
         <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
-        <li>{{author}}</li>
         <li ng-hide="isAuthenticated()" ui-sref-active="active">
           <a ui-sref="login">Login</a>
-        </li>
-
-        <li ng-show="isAuthenticated()" ui-sref-active="active">
-          <a ui-sref="logout">Logout</a>
         </li>
         <li>
         <div class="theme">
@@ -25,6 +20,26 @@
             </div>
           </form>
         </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-left" data-ng-show="isAuthenticated()">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/frog.jpg" style="width: 30px"/>{{authService.authenticatedUser}}
+            <span data-ng-bind="isAuthenticated.user.email">name</span> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="editProfile">Edit Profile</a>
+            </li>
+
+            <li data-ng-show="authentication.user.provider === 'local'">
+              <a href="/#!/settings/password">Change Password</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a ui-sref="logout">logout</a>
+            </li>
+          </ul>
         </li>
       </ul>
 

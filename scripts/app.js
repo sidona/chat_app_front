@@ -9,10 +9,13 @@
  * Main module of the application.
  */
 angular
-  .module('frontendApp', ['ui.router', 'ngResource', 'btford.socket-io', 'ngAnimate', 'satellizer'])
-  .constant('ENDPOINT_URI', 'http://localhost:3000');
+  .module('frontendApp', ['ui.router', 'ngResource', 'btford.socket-io', 'ngAnimate', 'satellizer','ngStorage','ngFileUpload'])
+angular
+  .module('frontendApp').constant('ENDPOINT_URI', 'http://localhost:3000');
 
-angular.module('frontendApp').config(function ($stateProvider, $urlRouterProvider, $httpProvider, $authProvider, ENDPOINT_URI) {
+angular
+  .module('frontendApp').config(function ($stateProvider, $urlRouterProvider, $httpProvider, $authProvider, ENDPOINT_URI) {
+
 
   $urlRouterProvider.otherwise("/home");
 
@@ -62,27 +65,23 @@ angular.module('frontendApp').config(function ($stateProvider, $urlRouterProvide
         controller: 'LoginCtrl'
       })
   $stateProvider
+    .state('editProfile', {
+      url: '/editProfile',
+      templateUrl: '/views/editProfile.html',
+      controller: 'EditprofileCtrl'
+    })
+  $stateProvider
     .state('chatDetail', {
       url: '/home/chat/:nameRoom',
       templateUrl: 'views/chat.html',
       controller: 'ChatdetailctrlCtrl'
     })
 
-
-
   $httpProvider.interceptors.push('authInterceptor');
-
   $authProvider.loginUrl = ENDPOINT_URI + '/login';
   $authProvider.signupUrl = ENDPOINT_URI + '/register';
 
 })
-  .run(function ($window) {
-    var params = $window.location.search.substring(1);
 
-    if (params && $window.opener && $window.opener.location.origin === $window.location.origin) {
-      var pair = params.split('=');
-      var code = decodeURIComponent(pair[1]);
 
-      $window.opener.postMessage(code, $window.location.origin);
-    }
-  });
+

@@ -16,6 +16,13 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+.thumb {
+  width: 40px;
+  height: 40px;
+  float: none;
+  position: relative;
+  top: 7px;
+}
 
 /* Custom page header */
 .header {

@@ -10,27 +10,28 @@
 angular.module('frontendApp')
   .factory('authToken', function ($window) {
     var storage = $window.localStorage;
-    var cachedToken;
     var userToken = 'userToken';
+    //var cachedToken;
+
     var isAuthenticated = false;
 
     var authToken = {
+
+      getToken: function () {
+        return storage.getItem(userToken)
+      },
+
       setToken: function (token) {
-        cachedToken = token;
         storage.setItem(userToken, token);
+        //cachedToken = token;
         isAuthenticated = true;
       },
-      getToken: function () {
-        if (!cachedToken)
-          cachedToken = storage.getItem(userToken);
 
-        return cachedToken;
-      },
       isAuthenticated: function () {
         return !!authToken.getToken();
       },
       removeToken: function () {
-        cachedToken = null;
+       // cachedToken = null;
         storage.removeItem(userToken);
         isAuthenticated = false;
       }
