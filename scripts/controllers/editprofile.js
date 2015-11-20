@@ -10,16 +10,19 @@
 angular.module('frontendApp')
   .controller('EditprofileCtrl', function ($scope,auth,profile,$state,$stateParams) {
 
-    $scope.profiles = profile.get({id: $stateParams.id});
-    console.log($scope.profiles)
+    //$scope.profiles = profile.get({id: $stateParams.id});
+    //console.log($scope.profiles)
     $scope.author=auth.authenticatedUser;
     $scope.name=auth.authenticatedUserName;
     $scope.location=auth.authenticatedUserLocation;
     console.log($scope.name)
+
+$scope.profiles=new profile();
     $scope.addDataProfile=function(){
-      $scope.profiles.save(function(){
+      $scope.profiles.$save(function(){
         $state.go('home')
       })
     }
+
 
   });

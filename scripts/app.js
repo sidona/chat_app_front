@@ -66,7 +66,7 @@ angular
       })
   $stateProvider
     .state('editProfile', {
-      url: '/editProfile',
+      url: '/editProfile/:id',
       templateUrl: '/views/editProfile.html',
       controller: 'EditprofileCtrl'
     })
@@ -79,10 +79,21 @@ angular
 
   $httpProvider.interceptors.push('authInterceptor');
 
-  $authProvider.loginUrl = ENDPOINT_URI + '/login';
-  $authProvider.signupUrl = ENDPOINT_URI + '/register';
+  //$authProvider.loginUrl = ENDPOINT_URI + '/login';
+  //$authProvider.signupUrl = ENDPOINT_URI + '/register';
 
 })
+  .run(function ($window) {
+    var params = $window.location.search.substring(1);
+
+    if (params && $window.opener && $window.opener.location.origin === $window.location.origin) {
+      var pair = params.split('=');
+      var code = decodeURIComponent(pair[1]);
+
+      $window.opener.postMessage(code, $window.location.origin);
+    }
+  });
+
 
 
 

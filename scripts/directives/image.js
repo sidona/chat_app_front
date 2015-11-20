@@ -10,11 +10,11 @@ angular.module('frontendApp')
   .directive('fileInput', ['$parse',function ($parse) {
     return{
       restrict:'A',
-      link: function(scope,elm,attr){
+      link: function(scope,el,attr){
 
-        elm.bind('change',function(){
+        el.bind('change',function(){
           $parse(attr.fileInput)
-            .assign(scope,elm[0].files)
+            .assign(scope,el[0].files)
           scope.$apply()
         })
 
