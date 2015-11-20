@@ -7,18 +7,18 @@
  * # image
  */
 angular.module('frontendApp')
-  .directive('image', function () {
+  .directive('fileInput', ['$parse',function ($parse) {
     return{
+      restrict:'A',
+      link: function(scope,elm,attr){
 
-      link: function($scope,el){
-
-        el.bind("change", function(e){
-
-          $scope.file = (e.srcElement || e.target).files[0];
-          $scope.getFile();
+        elm.bind('change',function(){
+          $parse(attr.fileInput)
+            .assign(scope,elm[0].files)
+          scope.$apply()
         })
 
       }
 
     }
-  });
+  }]);

@@ -78,6 +78,7 @@ angular
     })
 
   $httpProvider.interceptors.push('authInterceptor');
+
   $authProvider.loginUrl = ENDPOINT_URI + '/login';
   $authProvider.signupUrl = ENDPOINT_URI + '/register';
 
