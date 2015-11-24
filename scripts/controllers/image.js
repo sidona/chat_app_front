@@ -7,26 +7,33 @@
  * # ImageCtrl
  * Controller of the frontendApp
  */
-angular.module('frontendApp')
-  .controller('ImageCtrl', function ($scope,$http) {
-  $scope.filesChanged=function(elm){
-    $scope.files=elm.files
-    $scope.$apply()
 
-  }
-    $scope.upload=function(){
-      var formData=new FormData()
-      angular.forEach($scope.files,function(file){
-        formData.append('file',file)
-      })
-      $http.post('http://localhost:3000/upload',formData,
-        {
-          transformRequest:angular.identity,
-          headers:{'Content-Type':undefined}
-        })
-        .success(function(d){
-          console.log(d)
-        })
+angular.module('frontendApp').controller('imageCtrl', function ($scope,fileUpload) {
+
+
+  $scope.uploadFile = function(){
+    var file = $scope.myFile;
+    console.log('file is ' );
+    console.dir(file);
+    var uploadUrl = "http://localhost:3000/upload";
+   fileUpload.uploadFileToUrl(file, uploadUrl);
+  };
+
+});
+angular.module('frontendApp').directive('fileModel', ['$parse', function ($parse) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      var model = $parse(attrs.fileModel);
+      var modelSetter = model.assign;
+
+      element.bind('change', function(){
+        scope.$apply(function(){
+          modelSetter(scope, element[0].files[0]);
+        });
+      });
     }
+  };
 
-  });
+
+}])

@@ -1,3 +1,4 @@
+<head><link rel="stylesheet" ng-href="styles/bootstrap-{{css}}.css"></head>
 <div>
   Profile Information
 
@@ -42,9 +43,17 @@
         <input type="submit" class="btn btn-sm btn-primary" value="Save"/>
       </div>
     </div>
-
-
   </form>
+  <br/>
+  <div class="theme">
+    <ul>
+      <li>choose theme
+        <select ng-model="css" ng-options="bootstrap.url  as bootstrap.name for bootstrap in bootstraps"></select>
+      </li>
+    </ul>
+  </div>
+  <br/>
+
   <div ng-include="'views/image.html'"></div>
 
 </div>

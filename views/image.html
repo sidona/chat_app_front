@@ -1,7 +1,6 @@
-<div ng-controller="ImageCtrl">
-  <form>
-    <input type="file" file-input="files" multiple>
-    <button ng-click="upload()">Upload</button>
-    <li ng-repeat="file in files">{{file.name}}</li>
-  </form>
+<div ng-controller="imageCtrl">
+  <input type="file" file-model="myFile"/>
+  <button ng-click="uploadFile()">upload me</button>
+
 </div>
+

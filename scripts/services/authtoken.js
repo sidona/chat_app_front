@@ -11,7 +11,6 @@ angular.module('frontendApp')
   .factory('authToken', function ($window) {
     var storage = $window.localStorage;
     var userToken = 'userToken';
-    //var cachedToken;
 
     var isAuthenticated = false;
 
@@ -31,11 +30,11 @@ angular.module('frontendApp')
         return !!authToken.getToken();
       },
       removeToken: function () {
-       // cachedToken = null;
+        // cachedToken = null;
         storage.removeItem(userToken);
         isAuthenticated = false;
       }
-    }
+    };
 
     return authToken;
   });
